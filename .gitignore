@@ -16,6 +16,7 @@
 !/log/.keep
 /tmp
 
+.idea
 .ruby-version
 .generators
 .rakeTasks
