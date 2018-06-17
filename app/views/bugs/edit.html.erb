@@ -1,0 +1,6 @@
+<h1>버그 신고 수정</h1>
+<%= form_for @bug do |f| %>
+  내용 : <%= f.text_field :description %><br>
+  OS : <%= f.text_field :os %><br>
+  <%= f.submit '수정하기' %>
+<% end %>

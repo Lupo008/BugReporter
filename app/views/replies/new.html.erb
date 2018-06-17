@@ -1,0 +1,5 @@
+<h1>댓글 쓰기</h1>
+<%= form_for @reply, url: "/bugs/#{@bug.id}/replies" do |f| %>
+  내용 : <%= f.text_field :comment %><br>
+  <%= f.submit '쓰기' %>
+<% end %>

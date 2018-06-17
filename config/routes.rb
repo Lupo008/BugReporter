@@ -1,4 +1,26 @@
 Rails.application.routes.draw do
+
+  root 'bugs#index'
+  get '/bugs' => 'bugs#index'
+  get '/bugs/new' => 'bugs#new', as: :new_bug
+  post '/bugs' => 'bugs#create'
+  get '/bugs/:id' => 'bugs#show', as: :bug
+  get '/bugs/:id/edit' => 'bugs#edit', as: :edit_bug
+  patch '/bugs/:id' => 'bugs#update'
+  put '/bugs/:id' => 'bugs#update'
+  delete '/bugs/:id' => 'bugs#destroy'
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
+
+  get '/bugs/:id/replies/new' => 'replies#new'
+  post '/bugs/:id/replies' => 'replies#create'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

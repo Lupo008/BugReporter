@@ -2,11 +2,17 @@
 <html>
 <head>
   <title>BugReport</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<h1><%= link_to '홈', '/' %></h1>
+<% if current_user %>
+  <%= link_to '로그아웃', '/logout', method: 'delete' %>
+<% else %>
+  <%= link_to '로그인', '/login' %>
+  <%= link_to '회원가입', '/signup' %>
+<% end %>
 
 <%= yield %>
 

@@ -1,0 +1,34 @@
+<h1>버그 신고 상세</h1>
+<p>번호 : <%= @bug.id %></p>
+<p>신고자 : <%= @bug.user.nickname %></p>
+<p>내용 : <%= @bug.description %></p>
+<p>OS : <%= @bug.os %></p>
+<p>생성일 : <%= @bug.created_at %></p>
+<p>수정일 : <%= @bug.updated_at %></p>
+<% if @bug.replies.length >= 1 %>
+<table>
+  <thead>
+  <th>작성자</th>
+  <th>내용</th>
+  <th>생성일</th>
+  <th>수정일</th>
+  </thead>
+  <tbody>
+  <% @bug.replies.each do |reply| %>
+    <tr>
+      <td><%= reply.user.nickname %></td>
+      <td><%= reply.comment %></td>
+      <td><%= reply.created_at %></td>
+      <td><%= reply.updated_at %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end %>
+<% if current_user %>
+  <%= link_to '댓글 쓰기', "/bugs/#{@bug.id}/replies/new"%>
+  <% if @bug.user.id == current_user.id %>
+    <%= link_to '수정하기', edit_bug_path(@bug) %>
+    <%= link_to '삭제하기', bug_path(@bug), method: 'delete' %>
+  <% end %>
+<% end %>

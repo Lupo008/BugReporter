@@ -1,0 +1,6 @@
+<h1>로그인</h1>
+<%= form_for :session, url: login_path do |f| %>
+  <%= f.text_field :nickname %><br>
+  <%= f.password_field :password %><br>
+  <%= f.submit '로그인' %>
+<% end %>

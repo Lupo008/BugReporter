@@ -1,0 +1,27 @@
+<h1>버그 신고 목록</h1>
+<% if current_user %>
+  <%= link_to '버그 신고하기', new_bug_path %>
+<% end %>
+<table>
+  <thead>
+  <th>번호</th>
+  <th>신고자</th>
+  <th>내용</th>
+  <th>OS</th>
+  <th>생성일</th>
+  <th>수정일</th>
+  </thead>
+  <tbody>
+  <% @bugs.each do |bug| %>
+    <tr style = "cursor:pointer;" onclick="document.location.href='<%= bug_path(bug) %>'" onMouseOver=" window.status = '' " onMouseOut=" window.status = '' ">
+      <td><%= bug.id %></td>
+      <td><%= bug.user.nickname %></td>
+      <td><%= bug.description %></td>
+      <td><%= bug.os %></td>
+      <td><%= bug.created_at %></td>
+      <td><%= bug.updated_at %></td>
+      </a>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
